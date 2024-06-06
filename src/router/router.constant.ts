@@ -7,13 +7,18 @@ const url = "/supper-admin";
 export const ROUTER_BASE = {
   templateUi: {
     path: `${url}/template`,
-    name: "systemManagement",
+    name: "templateUi",
     type: TYPE_MANAGEMENT.AUTH_GUARD,
-    title: "systemManagement.title",
+    title: "templateUi.title",
     breakcrumb: [
       {
         orderBy: 1,
-        name: "systemManagement.breakcrumb",
+        name: "templateUi.breakcrumb.one",
+        path: `${url}/template`,
+      },
+      {
+        orderBy: 2,
+        name: "templateUi.breakcrumb.two",
         path: `${url}/template`,
       },
     ],

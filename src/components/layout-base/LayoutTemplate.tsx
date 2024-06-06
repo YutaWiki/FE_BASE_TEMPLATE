@@ -129,7 +129,7 @@ const LayoutTemplate: React.FC<LayoutTemplateProps> = ({
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (data && data.length == 0) {
+    if (data && data.length === 0) {
       // MenuAPI.getMenu().then((result: any) => {
       dispatch(SetMenu(menu));
       // });
@@ -347,7 +347,7 @@ const LayoutTemplate: React.FC<LayoutTemplateProps> = ({
             >
               <img
                 style={{ width: 35, marginRight: 8 }}
-                src="https://static.xx.fbcdn.net/images/emoji.php/v9/tb2/1.5/30/1f41f.png"
+                src="https://s3-alpha-sig.figma.com/img/c755/abbe/255d7752e7297398c9a6cc12cada9e3a?Expires=1718582400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=coDENIIEPdA2C6c-cTaUpY1GX8tsiC0sTLrODO3NdEUeKadPXx7r~wrm4d9hR8J6oeGbu5rFOAsHAj3MQpnF--gG-hJnPRpE0H5-JBjm2FOZGtWu-OPr26KOdjN5IHgrVPFyBrz6LAFvhpxkQsw9xIa06N1HyDEA-k56Gv1lr5O7Stfa6XDIlLETO7NLyX2iU74od4GIXd8wLxRw1ziHsPP8dftZt4-RBbaAJzfix9R81KUJFm6w01fHeN6EYpxJhixdmjTVliryDU424RAoT~zXVDPkQlioXbo7BnBBxfH5BaclkIufKSBTNaHgcd6g4O2dtHZU-Kq36xnxVs8onQ__"
                 alt=""
               />
               {t(title)}
@@ -378,4 +378,4 @@ const LayoutTemplate: React.FC<LayoutTemplateProps> = ({
   );
 };
 
-export default LayoutTemplate;
+export default memo(LayoutTemplate);

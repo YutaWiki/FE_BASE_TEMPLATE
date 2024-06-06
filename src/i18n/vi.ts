@@ -76,5 +76,26 @@ export const vi = {
   },
   titleTable: "Danh sách",
   titleSearch: "Tìm kiếm",
+  templateUi: {
+    title: "Mẫu component",
+    breakcrumb: {
+      one: "TemplateUI",
+      two: "Hihi"
+    },
+    iconTemplate: {
+      title: "Mẫu icon"
+    },
+    notificationTemplate: {
+      title: "Mẫu thông báo",
+      notification: "Mẫu notification",
+      modalConfig: "Mẫu Modal"
+    },
+    buttonTemplate: {
+      title: "Mẫu Button",
+    },
+    formTempate: {
+      title: "Mẫu Form"
+    }
+  }
 };
   

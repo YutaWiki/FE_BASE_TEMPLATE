@@ -7,7 +7,7 @@ import { vi } from './i18n/vi';
 i18n
   .use(initReactI18next)
   .init({
-    fallbackLng: 'en',
+    fallbackLng: 'vi',
     supportedLngs: LANGUAGES.map(el => el.code),
     resources: {
       en: { translation: en },

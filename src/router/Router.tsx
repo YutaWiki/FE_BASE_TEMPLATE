@@ -60,4 +60,4 @@ function RouterRender() {
   );
 }
 
-export default RouterRender;
+export default memo(RouterRender);

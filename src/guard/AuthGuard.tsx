@@ -72,4 +72,4 @@ const AuthGuard: FunctionComponent<
   // return <Navigate to="/login" />;
 };
 
-export default AuthGuard;
+export default memo(AuthGuard);
