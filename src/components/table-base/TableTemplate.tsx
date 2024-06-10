@@ -1,8 +1,7 @@
 import { Card, Pagination, Select, Table } from "antd";
 import type { TablePaginationConfig, TableProps } from "antd";
-import { t } from "i18next";
 import { memo, useState } from "react";
-import FontAwesomeBase from "../font-awesome/FontAwesomeBase";
+import { useTranslation } from "react-i18next";
 const { Option } = Select;
 
 interface PaginationProps {
@@ -34,6 +33,7 @@ function TableTemplate({
   title,
   dataSource, columns, paginationProp, onChange, handlePageSizeChange, handlePaginationChange, ...restProps
 }: TableTemplateProps) {
+  const { t } = useTranslation();
   const [pageSize, setPageSize] = useState<number>(paginationProp.size);
   const [current, setCurrent] = useState<number>(paginationProp.current);
    

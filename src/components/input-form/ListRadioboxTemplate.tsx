@@ -1,9 +1,9 @@
 import React, { memo } from "react";
 import { Radio, RadioChangeEvent } from "antd";
-import { Controller, useController } from "react-hook-form";
-import { t } from "i18next";
+import { useController } from "react-hook-form";
 import { TYPE_MANAGEMENT } from "../../interface/constants/type/Type.const";
 import { ICodeMng } from "../../interface/common/codeMng/CodeMng.interface";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   options: ICodeMng[]|undefined;
@@ -23,6 +23,7 @@ const ListRadioboxTemplate: React.FC<Props> = ({
   const {
     field: { onChange, value },
   } = useController({ name, control });
+  const { t } = useTranslation();
 
   const onChangeRadio = (e: RadioChangeEvent) => {
     onChange(e.target.value);

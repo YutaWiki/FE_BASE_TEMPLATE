@@ -2,7 +2,7 @@ import React, { memo } from "react";
 import { Select } from "antd";
 import { Controller } from "react-hook-form";
 import { TYPE_MANAGEMENT } from "../../interface/constants/type/Type.const";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 const SelectBoxTemplate: React.FC<any> = ({
   name,
@@ -12,6 +12,7 @@ const SelectBoxTemplate: React.FC<any> = ({
   defaultValue,
   ...restProps
 }) => {
+  const { t } = useTranslation();
   return (
     <>
       <Controller

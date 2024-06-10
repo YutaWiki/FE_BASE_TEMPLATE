@@ -1,7 +1,7 @@
 import { Checkbox, CheckboxProps } from "antd";
-import { t } from "i18next";
 import { memo } from "react";
 import { useController } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 const CheckboxGroup = Checkbox.Group;
 
 const ListCheckboxTemplate: React.FC<any> = ({
@@ -14,6 +14,8 @@ const ListCheckboxTemplate: React.FC<any> = ({
   const {
     field: { onChange, value },
   } = useController({ name, control });
+
+  const { t } = useTranslation();
 
   const checkAll = options.length === value.length;
   const indeterminate = value.length > 0 && value.length < options.length;

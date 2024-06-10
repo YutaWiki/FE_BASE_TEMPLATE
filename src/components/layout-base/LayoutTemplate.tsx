@@ -28,6 +28,8 @@ import FontAwesomeBase from "../font-awesome/FontAwesomeBase";
 import { IMenu } from "../../interface/common/Menu.interface";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { changeLanguage } from "../../i18n";
+import logo from "../../assets/images/logo/image.png";
+import SearchTemplate from "../input-form/SearchTemplate";
 
 const { Header, Content, Sider } = Layout;
 
@@ -140,7 +142,9 @@ const LayoutTemplate: React.FC<LayoutTemplateProps> = ({
   const [visible, setVisible] = useState(false);
 
   const { i18n, t } = useTranslation();
-  const [selectedLanguage, setSelectedLanguage] = useState<string>(i18n.language);
+  const [selectedLanguage, setSelectedLanguage] = useState<string>(
+    i18n.language
+  );
   const onChangeLang = (langCode: string) => {
     setSelectedLanguage(langCode);
     changeLanguage(langCode);
@@ -212,10 +216,7 @@ const LayoutTemplate: React.FC<LayoutTemplateProps> = ({
           <Row className="flex justify-center align-middle mt-5 pb-8">
             <div className="brand text-center">
               <Link to="/" className="active">
-                <img
-                  src="https://s3-alpha-sig.figma.com/img/c755/abbe/255d7752e7297398c9a6cc12cada9e3a?Expires=1718582400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=coDENIIEPdA2C6c-cTaUpY1GX8tsiC0sTLrODO3NdEUeKadPXx7r~wrm4d9hR8J6oeGbu5rFOAsHAj3MQpnF--gG-hJnPRpE0H5-JBjm2FOZGtWu-OPr26KOdjN5IHgrVPFyBrz6LAFvhpxkQsw9xIa06N1HyDEA-k56Gv1lr5O7Stfa6XDIlLETO7NLyX2iU74od4GIXd8wLxRw1ziHsPP8dftZt4-RBbaAJzfix9R81KUJFm6w01fHeN6EYpxJhixdmjTVliryDU424RAoT~zXVDPkQlioXbo7BnBBxfH5BaclkIufKSBTNaHgcd6g4O2dtHZU-Kq36xnxVs8onQ__"
-                  alt=""
-                />
+                <img src={logo} alt="" />
               </Link>
             </div>
           </Row>
@@ -226,54 +227,52 @@ const LayoutTemplate: React.FC<LayoutTemplateProps> = ({
           />
         </Layout>
       </Drawer>
-      <Sider
-        id="sider_ui"
-        trigger={null}
-        collapsible
-        collapsed={collapsed}
-        className="shadow-md"
-        style={{
-          background: "#ffff",
-        }}
-      >
-        <div
-          style={{
-            width: collapsed ? "80px" : "200px",
-            position: "fixed",
-            top: 0,
-            transition: "all 0.2s",
-          }}
-        >
-          <div>
-            <img
-              src="https://s3-alpha-sig.figma.com/img/c755/abbe/255d7752e7297398c9a6cc12cada9e3a?Expires=1718582400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=coDENIIEPdA2C6c-cTaUpY1GX8tsiC0sTLrODO3NdEUeKadPXx7r~wrm4d9hR8J6oeGbu5rFOAsHAj3MQpnF--gG-hJnPRpE0H5-JBjm2FOZGtWu-OPr26KOdjN5IHgrVPFyBrz6LAFvhpxkQsw9xIa06N1HyDEA-k56Gv1lr5O7Stfa6XDIlLETO7NLyX2iU74od4GIXd8wLxRw1ziHsPP8dftZt4-RBbaAJzfix9R81KUJFm6w01fHeN6EYpxJhixdmjTVliryDU424RAoT~zXVDPkQlioXbo7BnBBxfH5BaclkIufKSBTNaHgcd6g4O2dtHZU-Kq36xnxVs8onQ__"
-              alt=""
-            />
-          </div>
-          <Menu
-            mode="inline"
-            defaultSelectedKeys={["1"]}
-            items={buildMenuTree(data)}
-          />
-        </div>
-      </Sider>
       <Layout>
         <Header
           className="shadow-md"
           style={{
             padding: 0,
             background: "#ffff",
-            position: "sticky",
+            position: 'fixed',
             top: 0,
-            zIndex: 1,
+            zIndex: 100,
             width: "100%",
             display: "flex",
-            height: 45,
+            height: 60,
             alignItems: "center",
             justifyContent: "space-between",
           }}
         >
-          <div>
+          <div className="flex items-center ml-[14px]">
+            <div id="logo_id">
+              <img src={logo} className="w-[50px]" alt="" />
+            </div>
+          </div>
+          <div className="flex items-center">
+            <SearchTemplate></SearchTemplate>
+          </div>
+          <div className="flex items-center mr-[14px]">
+            <span>
+              <Popover
+                placement="bottomRight"
+                title={null}
+                content={
+                  <>
+                    <Select
+                      defaultValue={i18n.language}
+                      onChange={onChangeLang}
+                      value={selectedLanguage}
+                      options={LANGUAGES.map(({ code, label }) => ({
+                        value: code,
+                        label: label,
+                      }))}
+                    />
+                  </>
+                }
+              >
+                <CaretDownOutlined />
+              </Popover>
+            </span>
             {/* show sider */}
             <Button
               type="text"
@@ -301,78 +300,83 @@ const LayoutTemplate: React.FC<LayoutTemplateProps> = ({
               }}
             />
           </div>
-          <div style={{ marginRight: 15 }}>
-            <span>
-              <Popover
-                placement="bottomRight"
-                title={null}
-                content={
-                  <>
-                    <Select
-                      defaultValue={i18n.language}
-                      onChange={onChangeLang}
-                      value={selectedLanguage}
-                      options={LANGUAGES.map(({ code, label }) => ({
-                        value: code,
-                        label: label,
-                      }))}
-                    />
-                  </>
-                }
-              >
-                <CaretDownOutlined />
-              </Popover>
-            </span>
-          </div>
         </Header>
-{/* animate__animated animate__bounceInRight  */}
-        <Content
-          className={`my-[30px] mx-[40px] h-screen"`}
-        >
-          <div
+        <Layout>
+          <Sider
+            id="sider_ui"
+            trigger={null}
+            collapsible
+            collapsed={collapsed}
+            className="shadow-md"
             style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
+              background: "#ffff",
             }}
           >
-            <h2
+            <div className="mt-4"
+              style={{
+                width: collapsed ? "80px" : "200px",
+                position: "fixed",
+                top: 60,
+                transition: "all 0.2s",
+              }}
+            >
+              {/* <div>
+                <img src={logo} alt="" />
+              </div> */}
+              <Menu
+                mode="inline"
+                defaultSelectedKeys={["1"]}
+                items={buildMenuTree(data)}
+              />
+            </div>
+          </Sider>
+          {/* animate__animated animate__bounceInRight  */}
+          <Content className={`my-[30px] mx-[40px] h-screen"`}>
+            <div
               style={{
                 display: "flex",
                 alignItems: "center",
-                marginTop: 0,
-                fontWeight: 700,
-                fontSize: 22,
+                justifyContent: "space-between",
               }}
             >
-              <img
-                style={{ width: 35, marginRight: 8 }}
-                src="https://s3-alpha-sig.figma.com/img/c755/abbe/255d7752e7297398c9a6cc12cada9e3a?Expires=1718582400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=coDENIIEPdA2C6c-cTaUpY1GX8tsiC0sTLrODO3NdEUeKadPXx7r~wrm4d9hR8J6oeGbu5rFOAsHAj3MQpnF--gG-hJnPRpE0H5-JBjm2FOZGtWu-OPr26KOdjN5IHgrVPFyBrz6LAFvhpxkQsw9xIa06N1HyDEA-k56Gv1lr5O7Stfa6XDIlLETO7NLyX2iU74od4GIXd8wLxRw1ziHsPP8dftZt4-RBbaAJzfix9R81KUJFm6w01fHeN6EYpxJhixdmjTVliryDU424RAoT~zXVDPkQlioXbo7BnBBxfH5BaclkIufKSBTNaHgcd6g4O2dtHZU-Kq36xnxVs8onQ__"
-                alt=""
-              />
-              {t(title)}
-            </h2>
-            <Breadcrumb>
-              <Breadcrumb.Item>
-                <Link to={"/"}>
-                  <HomeOutlined />
-                </Link>
-              </Breadcrumb.Item>
-              {breakcrumb.map((el) => {
-                return (
-                  <>
-                    <Breadcrumb.Item key={el.name}>
-                      <Link to={el.path} key={el.name}>
-                        {t(el.name)}
-                      </Link>
-                    </Breadcrumb.Item>
-                  </>
-                );
-              })}
-            </Breadcrumb>
-          </div>
-          <div>{children}</div>
-        </Content>
+              <h2
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  marginTop: 0,
+                  fontWeight: 700,
+                  fontSize: 22,
+                }}
+              >
+                <img
+                  style={{ width: 35, marginRight: 8 }}
+                  src="https://s3-alpha-sig.figma.com/img/c755/abbe/255d7752e7297398c9a6cc12cada9e3a?Expires=1718582400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=coDENIIEPdA2C6c-cTaUpY1GX8tsiC0sTLrODO3NdEUeKadPXx7r~wrm4d9hR8J6oeGbu5rFOAsHAj3MQpnF--gG-hJnPRpE0H5-JBjm2FOZGtWu-OPr26KOdjN5IHgrVPFyBrz6LAFvhpxkQsw9xIa06N1HyDEA-k56Gv1lr5O7Stfa6XDIlLETO7NLyX2iU74od4GIXd8wLxRw1ziHsPP8dftZt4-RBbaAJzfix9R81KUJFm6w01fHeN6EYpxJhixdmjTVliryDU424RAoT~zXVDPkQlioXbo7BnBBxfH5BaclkIufKSBTNaHgcd6g4O2dtHZU-Kq36xnxVs8onQ__"
+                  alt=""
+                />
+                {t(title)}
+              </h2>
+              <Breadcrumb>
+                <Breadcrumb.Item>
+                  <Link to={"/"}>
+                    <HomeOutlined />
+                  </Link>
+                </Breadcrumb.Item>
+                {breakcrumb.map((el) => {
+                  return (
+                    <>
+                      <Breadcrumb.Item key={el.name}>
+                        <Link to={el.path} key={el.name}>
+                          {t(el.name)}
+                        </Link>
+                      </Breadcrumb.Item>
+                    </>
+                  );
+                })}
+              </Breadcrumb>
+            </div>
+            <div>{children}</div>
+          </Content>
+        </Layout>
       </Layout>
     </Layout>
   );

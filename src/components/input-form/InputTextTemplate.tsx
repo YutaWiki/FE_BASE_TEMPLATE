@@ -1,8 +1,8 @@
 import React, { memo } from "react";
 import { Input } from "antd";
-import { Controller, useFormContext } from "react-hook-form";
+import { Controller } from "react-hook-form";
 import { TYPE_MANAGEMENT } from "../../interface/constants/type/Type.const";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   name: string;
@@ -17,6 +17,7 @@ const InputTextTemplate: React.FC<Props> = ({
   control,
   ...restProps
 }) => {
+  const { t } = useTranslation();
   return (
     <>
       <Controller
