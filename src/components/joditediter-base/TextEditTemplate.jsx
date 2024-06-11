@@ -137,6 +137,14 @@ const buttons = [
   // }
 ];
 
+const TextEditTemplate = ({
+  name,
+  mode,
+  control,
+  height,
+  ...restProps
+}) => {
+  
 const editorConfig = {
   readonly: false,
   toolbar: true,
@@ -155,16 +163,9 @@ const editorConfig = {
     insertImageAsBase64URI: true
   },
   // width: 800,
-  height: 842
+  height: height
 };
 
-const TextEditTemplate = ({
-  name,
-  mode,
-  control,
-  ...restProps
-}) => {
-  
   return (
     <>
       <Controller

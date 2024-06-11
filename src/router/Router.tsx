@@ -11,7 +11,7 @@ import LoginForm from "../pages/common/login-form";
 function RouterRender() {
   return (
     <>
-      <BrowserRouter basename={AppConfig.routerBase}>
+      <BrowserRouter>
         <Routes>
           <Route
             path="*"
@@ -27,7 +27,7 @@ function RouterRender() {
             element={
               <Navigate
                 replace
-                to={ROUTER_BASE.templateUi.path}
+                to={AppConfig.routerBase}
               />
             }
           />

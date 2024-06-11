@@ -47,6 +47,14 @@ export const vi = {
       clear: "Hủy tìm kiếm",
       search: "Tìm kiếm",
     },
+    inputFile: {
+      upload: "Tải lên",
+      validateFile: {
+        maxSize: "File không được quá 5MB!"
+      },
+      confirm: "Bạn có chắc chắn muốn xóa file không?",
+      success: "Tải lên file thành công!"
+    }
   },
   base: {
     common: {

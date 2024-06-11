@@ -25,6 +25,8 @@ import AvatarTemplate from "../../components/avatar-base/AvatarTemplate";
 import logo from "../../assets/images/logo/image.png";
 import DividerTemplate from "../../components/divider-base/DividerTemplate";
 import TextEditTemplate from "../../components/joditediter-base/TextEditTemplate";
+import InputFileTemplate from "../../components/input-form/InputFileTemplate";
+import PreviewTemplate from "../../components/avatar-base/PreviewTemplate";
 
 function TemplateUi() {
   const mode = TYPE_MANAGEMENT.MODE_CREATE;
@@ -167,10 +169,7 @@ function TemplateUi() {
       render: (record: any) => (
         <Space size="middle">
           <Tooltip title={t("common.button.detail")}>
-            <ButtonBase
-              className="mx-2 btn btn__table btn__detail"
-              icon={<FontAwesomeBase iconName={"circle-info"} />}
-            ></ButtonBase>
+            <ButtonBase category="remove"></ButtonBase>
           </Tooltip>
         </Space>
       ),
@@ -215,8 +214,7 @@ function TemplateUi() {
               className="mr-3"
               iconName={"home"}
             ></FontAwesomeBase>
-            {t("templateUi.notificationTemplate.title")} // Mẫu sẽ được update
-            theo figma
+            {"Mẫu thông báo"} // Mẫu sẽ được update theo figma
           </>
         )}
       >
@@ -226,6 +224,7 @@ function TemplateUi() {
               {t("templateUi.notificationTemplate.notification")}
             </h1>
             <ButtonBase
+              category="bassic"
               onClick={() =>
                 openNotification(
                   "error",
@@ -237,6 +236,7 @@ function TemplateUi() {
               Error
             </ButtonBase>
             <ButtonBase
+              category="bassic"
               onClick={() =>
                 openNotification(
                   "info",
@@ -248,6 +248,7 @@ function TemplateUi() {
               info
             </ButtonBase>
             <ButtonBase
+              category="bassic"
               onClick={() =>
                 openNotification(
                   "success",
@@ -259,6 +260,7 @@ function TemplateUi() {
               success
             </ButtonBase>
             <ButtonBase
+              category="bassic"
               onClick={() =>
                 openNotification(
                   "warning",
@@ -275,6 +277,7 @@ function TemplateUi() {
               {t("templateUi.notificationTemplate.modalConfig")}
             </h1>
             <ButtonBase
+              category="bassic"
               onClick={() => {
                 openModal(
                   "error",
@@ -289,6 +292,7 @@ function TemplateUi() {
               Error
             </ButtonBase>
             <ButtonBase
+              category="bassic"
               onClick={() => {
                 openModal(
                   "confirm",
@@ -303,6 +307,7 @@ function TemplateUi() {
               confirm
             </ButtonBase>
             <ButtonBase
+              category="bassic"
               onClick={() => {
                 openModal(
                   "info",
@@ -317,6 +322,7 @@ function TemplateUi() {
               info
             </ButtonBase>
             <ButtonBase
+              category="bassic"
               onClick={() => {
                 openModal(
                   "success",
@@ -331,6 +337,7 @@ function TemplateUi() {
               success
             </ButtonBase>
             <ButtonBase
+              category="bassic"
               onClick={() => {
                 openModal(
                   "warning",
@@ -357,106 +364,37 @@ function TemplateUi() {
               className="mr-3"
               iconName={"home"}
             ></FontAwesomeBase>
-            {t("templateUi.buttonTemplate.title")} // Mẫu sẽ được update theo
-            figma
+            {"Mẫu Button"} // Mẫu sẽ được update theo figma
           </>
         )}
       >
         <h1 className="text-xl mb-4">Basic button</h1>
-        <ButtonBase>Basic button</ButtonBase>
+        <ButtonBase category="bassic">Basic button</ButtonBase>
 
         <h1 className="text-xl mb-4">Loading button</h1>
-        <ButtonBase loading={true}>Loading button</ButtonBase>
-        <h1 className="text-xl mb-4">Button thêm</h1>
-        <ButtonBase
-          className="btn__custom btn__add"
-          icon={
-            <FontAwesomeBase
-              className="m2-3"
-              iconName={"plus"}
-            ></FontAwesomeBase>
-          }
-        >
-          {t("common.button.create")}
+        <ButtonBase category="bassic" loading={true}>
+          Loading button
         </ButtonBase>
+        <h1 className="text-xl mb-4">Button thêm</h1>
+        <ButtonBase category="create"></ButtonBase>
 
         <h1 className="text-xl mb-4">Button sửa</h1>
-        <ButtonBase
-          className="btn__custom btn__update"
-          icon={
-            <FontAwesomeBase
-              className="m2-3"
-              iconName={"pen-to-square"}
-            ></FontAwesomeBase>
-          }
-        >
-          {t("common.button.update")}
-        </ButtonBase>
+        <ButtonBase category="update"></ButtonBase>
 
         <h1 className="text-xl mb-4">Button Đi tới chỉnh sửa</h1>
-        <ButtonBase
-          className="btn__custom btn__goToUpdate"
-          icon={
-            <FontAwesomeBase
-              className="m2-3"
-              iconName={"wrench"}
-            ></FontAwesomeBase>
-          }
-        >
-          {t("common.button.goToUpdate")}
-        </ButtonBase>
+        <ButtonBase category="goUpdate"></ButtonBase>
 
         <h1 className="text-xl mb-4">Button Xóa</h1>
-        <ButtonBase
-          className="btn__custom btn__remove"
-          icon={
-            <FontAwesomeBase
-              className="m2-3"
-              iconName={"trash"}
-            ></FontAwesomeBase>
-          }
-        >
-          {t("common.button.delete")}
-        </ButtonBase>
+        <ButtonBase category="remove"></ButtonBase>
 
         <h1 className="text-xl mb-4">Button Quay lại</h1>
-        <ButtonBase
-          className="btn__custom btn__back"
-          icon={
-            <FontAwesomeBase
-              className="m2-3"
-              iconName={"rotate-left"}
-            ></FontAwesomeBase>
-          }
-        >
-          {t("common.button.back")}
-        </ButtonBase>
+        <ButtonBase category="back"></ButtonBase>
 
         <h1 className="text-xl mb-4">Button clear form</h1>
-        <ButtonBase
-          className="btn__custom btn__clearForm"
-          icon={
-            <FontAwesomeBase
-              className="m2-3"
-              iconName={"broom"}
-            ></FontAwesomeBase>
-          }
-        >
-          {t("common.formSearch.clear")}
-        </ButtonBase>
+        <ButtonBase category="clearForm"></ButtonBase>
 
         <h1 className="text-xl mb-4">Button tìm kiếm</h1>
-        <ButtonBase
-          className="btn__custom btn__search"
-          icon={
-            <FontAwesomeBase
-              className="m2-3"
-              iconName={"magnifying-glass"}
-            ></FontAwesomeBase>
-          }
-        >
-          {t("common.formSearch.search")}
-        </ButtonBase>
+        <ButtonBase category="search"></ButtonBase>
       </CardLayoutTemplate>
 
       {/* Form base */}
@@ -468,7 +406,7 @@ function TemplateUi() {
               className="mr-3"
               iconName={"home"}
             ></FontAwesomeBase>
-            {t("templateUi.formTempate.title")} // Mẫu sẽ được update theo figma
+            {"Mẫu Form"} // Mẫu sẽ được update theo figma
           </>
         )}
       >
@@ -526,52 +464,16 @@ function TemplateUi() {
 
           <FormFooterTemplate>
             {mode === TYPE_MANAGEMENT.MODE_CREATE ? (
-              <ButtonBase
-                className="mx-2 btn btn__create"
-                icon={
-                  <FontAwesomeBase
-                    className="m2-3"
-                    iconName={"plus"}
-                  ></FontAwesomeBase>
-                }
-                onClick={() => console.log(getValues())}
-              >
-                {t("common.button.create")}
-              </ButtonBase>
+              <ButtonBase category="create"></ButtonBase>
             ) : mode === TYPE_MANAGEMENT.MODE_DETAIL ? (
-              <ButtonBase
-                // onClick={() =>
-                //   navigate(
-                //     `${ROUTER_BASE.objectManagement.path}/${TYPE_MANAGEMENT.MODE_UPDATE}/${id}`
-                //   )
-                // }
-                className="mx-2 btn btn__goToUpdate"
-              >
-                {t("common.button.goToUpdate")}
-              </ButtonBase>
+              <ButtonBase category="goUpdate"></ButtonBase>
             ) : (
               <>
-                {" "}
-                <ButtonBase
-                  className="mx-2 btn btn__update"
-                  // onClick={() => onUpdate()}
-                >
-                  {t("common.button.update")}
-                </ButtonBase>
-                <ButtonBase
-                  className="mx-2 btn btn__delete"
-                  // onClick={() => onDelete()}
-                >
-                  {t("common.button.delete")}
-                </ButtonBase>
+                <ButtonBase category="update"></ButtonBase>
+                <ButtonBase category="remove"></ButtonBase>
               </>
             )}
-            <ButtonBase
-              className="mx-2 btn btn__back"
-              onClick={() => alert("Back !!!")}
-            >
-              {t("common.button.back")}
-            </ButtonBase>
+            <ButtonBase category="back"></ButtonBase>
           </FormFooterTemplate>
         </FormTemplate>
       </CardLayoutTemplate>
@@ -603,6 +505,7 @@ function TemplateUi() {
         active={
           <>
             <ButtonBase
+              category="bassic"
               className="mx-2 btn btn__header__table btn__create"
               icon={<FontAwesomeBase className="mr-1" iconName={"plus"} />}
             >
@@ -671,17 +574,17 @@ function TemplateUi() {
         </DividerTemplate>
 
         <Avatar.Group>
-          <Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=1" />
+          <AvatarTemplate src="https://api.dicebear.com/7.x/miniavs/svg?seed=1" />
           <a href="https://ant.design">
-            <Avatar style={{ backgroundColor: "#f56a00" }}>K</Avatar>
+            <AvatarTemplate style={{ backgroundColor: "#f56a00" }}>K</AvatarTemplate>
           </a>
           <Tooltip title="Ant User" placement="top">
-            <Avatar
+            <AvatarTemplate
               style={{ backgroundColor: "#87d068" }}
               icon={<FontAwesomeBase iconName={"home"}></FontAwesomeBase>}
             />
           </Tooltip>
-          <Avatar
+          <AvatarTemplate
             style={{ backgroundColor: "#1677ff" }}
             icon={<FontAwesomeBase iconName={"home"}></FontAwesomeBase>}
           />
@@ -693,15 +596,15 @@ function TemplateUi() {
             style: { color: "#f56a00", backgroundColor: "#fde3cf" },
           }}
         >
-          <Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=2" />
-          <Avatar style={{ backgroundColor: "#f56a00" }}>K</Avatar>
+          <AvatarTemplate src="https://api.dicebear.com/7.x/miniavs/svg?seed=2" />
+          <AvatarTemplate style={{ backgroundColor: "#f56a00" }}>K</AvatarTemplate>
           <Tooltip title="Ant User" placement="top">
-            <Avatar
+            <AvatarTemplate
               style={{ backgroundColor: "#87d068" }}
               icon={<FontAwesomeBase iconName={"home"}></FontAwesomeBase>}
             />
           </Tooltip>
-          <Avatar
+          <AvatarTemplate
             style={{ backgroundColor: "#1677ff" }}
             icon={<FontAwesomeBase iconName={"home"}></FontAwesomeBase>}
           />
@@ -714,15 +617,15 @@ function TemplateUi() {
             style: { color: "#f56a00", backgroundColor: "#fde3cf" },
           }}
         >
-          <Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=3" />
-          <Avatar style={{ backgroundColor: "#f56a00" }}>K</Avatar>
+          <AvatarTemplate src="https://api.dicebear.com/7.x/miniavs/svg?seed=3" />
+          <AvatarTemplate style={{ backgroundColor: "#f56a00" }}>K</AvatarTemplate>
           <Tooltip title="Ant User" placement="top">
-            <Avatar
+            <AvatarTemplate
               style={{ backgroundColor: "#87d068" }}
               icon={<FontAwesomeBase iconName={"home"}></FontAwesomeBase>}
             />
           </Tooltip>
-          <Avatar
+          <AvatarTemplate
             style={{ backgroundColor: "#1677ff" }}
             icon={<FontAwesomeBase iconName={"home"}></FontAwesomeBase>}
           />
@@ -740,34 +643,34 @@ function TemplateUi() {
             popover: { trigger: "click" },
           }}
         >
-          <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-          <Avatar style={{ backgroundColor: "#f56a00" }}>K</Avatar>
+          <AvatarTemplate src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+          <AvatarTemplate style={{ backgroundColor: "#f56a00" }}>K</AvatarTemplate>
           <Tooltip title="Ant User" placement="top">
-            <Avatar
+            <AvatarTemplate
               style={{ backgroundColor: "#87d068" }}
               icon={<FontAwesomeBase iconName={"home"}></FontAwesomeBase>}
             />
           </Tooltip>
-          <Avatar
+          <AvatarTemplate
             style={{ backgroundColor: "#1677ff" }}
             icon={<FontAwesomeBase iconName={"home"}></FontAwesomeBase>}
           />
         </Avatar.Group>
         <DividerTemplate />
         <Avatar.Group shape="square">
-          <Avatar style={{ backgroundColor: "#fde3cf" }}>A</Avatar>
-          <Avatar style={{ backgroundColor: "#f56a00" }}>K</Avatar>
-          <Avatar
+          <AvatarTemplate style={{ backgroundColor: "#fde3cf" }}>A</AvatarTemplate>
+          <AvatarTemplate style={{ backgroundColor: "#f56a00" }}>K</AvatarTemplate>
+          <AvatarTemplate
             style={{ backgroundColor: "#87d068" }}
             icon={<FontAwesomeBase iconName={"home"}></FontAwesomeBase>}
           />
-          <Avatar
+          <AvatarTemplate
             style={{ backgroundColor: "#1677ff" }}
             icon={<FontAwesomeBase iconName={"home"}></FontAwesomeBase>}
           />
         </Avatar.Group>
       </CardLayoutTemplate>
-      
+
       {/* Form base */}
       <CardLayoutTemplate
         className="mt-7 mb-3"
@@ -781,7 +684,91 @@ function TemplateUi() {
           </>
         )}
       >
-        <TextEditTemplate columns={columns} name={"textEditer"} mode={TYPE_MANAGEMENT.MODE_DETAIL} control={control}></TextEditTemplate>
+        <TextEditTemplate
+          columns={columns}
+          height={300}
+          name={"textEditer"}
+          mode={TYPE_MANAGEMENT.MODE_CREATE}
+          control={control}
+        ></TextEditTemplate>
+      </CardLayoutTemplate>
+
+      {/* Input File base */}
+      <CardLayoutTemplate
+        className="mt-7 mb-3"
+        title={() => (
+          <>
+            <FontAwesomeBase
+              className="mr-3"
+              iconName={"home"}
+            ></FontAwesomeBase>
+            {"File Image Template"} // Mẫu sẽ được update theo figma
+          </>
+        )}
+      >
+        <h1 className="text-xl mb-4">Upload file</h1>
+        <InputFileTemplate
+          columns={columns}
+          name={"textEditer"}
+          mode={TYPE_MANAGEMENT.MODE_CREATE}
+          control={control}
+        ></InputFileTemplate>
+
+        <h1 className="text-xl mb-4">Preview Bassic</h1>
+
+        <PreviewTemplate
+          category="Image"
+          data={[
+            {
+              width: 200,
+              src: "https://png.pngtree.com/thumb_back/fw800/background/20230611/pngtree-clouds-and-flowers-in-pink-landscape-image_2945381.jpg",
+            },
+          ]}
+        ></PreviewTemplate>
+
+        <h1 className="text-xl mb-4">Preview List</h1>
+        <PreviewTemplate
+          category="Image"
+          data={[
+            {
+              width: 200,
+              src: "https://png.pngtree.com/thumb_back/fw800/background/20230611/pngtree-clouds-and-flowers-in-pink-landscape-image_2945381.jpg",
+            },
+            {
+              width: 200,
+              src: "https://png.pngtree.com/thumb_back/fh260/background/20230527/pngtree-nature-wallpapers-image_2683049.jpg",
+            },
+          ]}
+        ></PreviewTemplate>
+
+        <h1 className="text-xl mb-4">Preview a collection from one image.</h1>
+        <PreviewTemplate
+          category="Image"
+          data={[
+            {
+              width: 200,
+              src: "https://png.pngtree.com/thumb_back/fw800/background/20230611/pngtree-clouds-and-flowers-in-pink-landscape-image_2945381.jpg",
+            },
+          ]}
+          srcImage={[
+            "https://png.pngtree.com/thumb_back/fw800/background/20230611/pngtree-clouds-and-flowers-in-pink-landscape-image_2945381.jpg",
+            "https://www.vietnamworks.com/hrinsider/wp-content/uploads/2023/12/hinh-nen-dien-thoai-35.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6sxBlxs9by-D43ovCOqtwBJbc6w0ZbNzVeLOQoMQf5Am8Bvhe0tQNYePvivVQ6vB8beg&usqp=CAU",
+          ]}
+        ></PreviewTemplate>
+
+        <h1 className="text-xl mb-4">Video Preview.</h1>
+        <PreviewTemplate
+          category="Video"
+          srcDefault={{
+            width: 200,
+            src: "https://png.pngtree.com/thumb_back/fw800/background/20230611/pngtree-clouds-and-flowers-in-pink-landscape-image_2945381.jpg",
+          }}
+          srcVideo={
+            "https://hls.tuoitre.vn/tuoitre/animated_thumb/p_00:00:10/471584752817336320/2024/6/11/chay-rung-1718093153754294046332.mp4"
+          }
+          styleVideo={{ width: 900 }}
+        ></PreviewTemplate>
       </CardLayoutTemplate>
     </>
   );

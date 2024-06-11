@@ -16,3 +16,6 @@ export const TYPE_MANAGEMENT = {
 
 export type NotificationType = 'success' | 'info' | 'warning' | 'error';
 export type ModalType = 'success' | 'info' | 'warning' | 'error' | 'confirm';
+export type ButtonType = 'bassic' | 'create' | 'update' | 'goUpdate' | 'remove' | 'back' | 'clearForm' | 'search';
+export type PreviewType = 'Image' | 'Video';
+export type AvatarType = 'avatar' | 'group';
