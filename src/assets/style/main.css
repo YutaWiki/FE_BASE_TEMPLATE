@@ -1,0 +1,166 @@
+/* Layout */
+.ant-layout {
+  background-color: var(--backgroup-layout) !important;
+}
+
+.ant-layout .ant-layout-sider {
+  background-color: var(--backgroup-sider) !important;
+}
+
+.ant-layout .ant-layout-header {
+  background: var(--backgroup-header) !important;
+}
+
+.ant-menu-light,
+.ant-menu-light > .ant-menu {
+  background-color: var(--backgroup-sider) !important;
+}
+
+.ant-menu-light .ant-menu-item,
+.ant-menu-light > .ant-menu .ant-menu-item,
+.ant-menu-light .ant-menu-submenu-title,
+.ant-menu-light > .ant-menu .ant-menu-submenu-title {
+  color: var(--color-title) !important;
+}
+
+/* Drawer */
+.ant-drawer .ant-drawer-content {
+  background: var(--backgroup-drawer) !important;
+}
+/* Card */
+.ant-card {
+  background: var(--backgroup-card) !important;
+}
+
+.shadow-custom {
+  box-shadow: var(--shawdow-custom);
+}
+
+.title__template {
+  color: var(--color-title) !important;
+}
+.ant-card-bordered {
+  border: var(--backgroup-card) !important;
+}
+.ant-card .ant-card-head {
+  border-bottom: var(--border-card-header);
+}
+
+/* Breadcrumb */
+.ant-breadcrumb a {
+  color: var(--color-breakcum);
+}
+
+.ant-breadcrumb .ant-breadcrumb-separator {
+  color: var(--color-breakcum);
+}
+
+/* Input */
+.ant-input-outlined,
+.jodit-container:not(.jodit_inline) .jodit-workplace {
+  background: var(--backgroup-card) !important;
+  border-color: var(--ant-input-outlined-border) !important;
+}
+.jodit-container:not(.jodit_inline) {
+  background: var(--backgroup-card) !important;
+  border-color: var(--ant-input-outlined-border) !important;
+}
+
+.ant-input,
+.ant-input::placeholder {
+  color: var(--color-title);
+}
+
+.ant-input-outlined:hover,
+.ant-input-outlined:focus,
+.ant-input-outlined:focus-within {
+  background: var(--backgroup-card);
+  color: var(--color-title);
+}
+
+/* Icon */
+.icon__custom {
+  color: var(--color-title);
+}
+
+/* Radio */
+.ant-radio-wrapper {
+  color: var(--color-title);
+}
+
+/* CheckBox */
+.ant-checkbox-wrapper {
+  color: var(--color-title);
+}
+
+/* Table */
+.ant-pagination {
+  color: var(--color-title);
+}
+
+.ant-pagination-prev .ant-pagination-item-link span,
+.ant-pagination-next .ant-pagination-item-link span {
+  color: var(--color-title);
+}
+
+.ant-pagination-item {
+  color: var(--color-title);
+  background-color: var(--page-backgroup) !important;
+  border-color: var(--ant-input-outlined-border) !important;
+  transition: all 0.2s ease-in-out;
+}
+
+.ant-pagination-item:hover {
+  box-shadow: 0 3px 7px 0 rgba(65, 69, 88, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.07);
+}
+
+.ant-pagination-item-active {
+  border-color: var(--ant-input-outlined-border) !important;
+}
+
+.ant-table-wrapper .ant-table-tbody > tr.ant-table-placeholder:hover > th,
+.ant-table-wrapper .ant-table-tbody > tr.ant-table-placeholder:hover > td,
+.ant-table-wrapper .ant-table-tbody > tr.ant-table-placeholder {
+  background-color: var(--backgroup-card) !important;
+}
+
+.ant-empty-description {
+  color: var(--color-title) !important;
+}
+
+.ant-table-wrapper .ant-table-thead > tr > th,
+.ant-table-wrapper .ant-table-thead > tr > td {
+  background-color: var(--table-header-bg);
+}
+
+.ant-table-wrapper .ant-table-thead th.ant-table-column-sort {
+    background-color: var(--table-header-select);
+}
+
+.ant-table-wrapper .ant-table-thead th.ant-table-column-has-sorters:hover {
+    background-color: var(--table-header-select);
+}
+
+.ant-table-cell {
+  color: var(--color-title) !important;
+}
+
+.ant-table-wrapper
+  .ant-table-thead
+  > tr
+  > th:not(:last-child):not(.ant-table-selection-column):not(
+    .ant-table-row-expand-icon-cell
+  ):not([colspan])::before,
+.ant-table-wrapper
+  .ant-table-thead
+  > tr
+  > td:not(:last-child):not(.ant-table-selection-column):not(
+    .ant-table-row-expand-icon-cell
+  ):not([colspan])::before {
+    color: var(--color-title) !important;
+}
+
+.ant-divider {
+    color: var(--color-title) !important;
+    border-color: var(--ant-input-outlined-border) !important;
+}

@@ -27,6 +27,8 @@ import DividerTemplate from "../../components/divider-base/DividerTemplate";
 import TextEditTemplate from "../../components/joditediter-base/TextEditTemplate";
 import InputFileTemplate from "../../components/input-form/InputFileTemplate";
 import PreviewTemplate from "../../components/avatar-base/PreviewTemplate";
+import TitleTemplate from "../../components/lable-base/TitleTemplate";
+import TextTemplate from "../../components/lable-base/TextTemplate";
 
 function TemplateUi() {
   const mode = TYPE_MANAGEMENT.MODE_CREATE;
@@ -192,7 +194,7 @@ function TemplateUi() {
           </>
         )}
       >
-        <h1 className="text-xl mb-4">Search Icon</h1>
+        <TextTemplate className="text-lg mb-4">Search Icon</TextTemplate>
         <Input
           defaultValue="home"
           onChange={(e: any) => {
@@ -200,9 +202,9 @@ function TemplateUi() {
           }}
         />
 
-        <h1 className="text-xl my-4">
+        <TextTemplate className="text-lg my-4">
           Kết quả icon: <FontAwesomeBase className="ml-3" iconName={icon} />
-        </h1>
+        </TextTemplate>
       </CardLayoutTemplate>
 
       {/* notification */}
@@ -220,9 +222,9 @@ function TemplateUi() {
       >
         <Row gutter={16}>
           <Col span={12}>
-            <h1 className="text-xl mb-4">
+            <TextTemplate className="text-lg mb-4">
               {t("templateUi.notificationTemplate.notification")}
-            </h1>
+            </TextTemplate>
             <ButtonBase
               category="bassic"
               onClick={() =>
@@ -273,9 +275,9 @@ function TemplateUi() {
             </ButtonBase>
           </Col>
           <Col span={12}>
-            <h1 className="text-xl mb-4">
+            <TextTemplate className="text-lg mb-4">
               {t("templateUi.notificationTemplate.modalConfig")}
-            </h1>
+            </TextTemplate>
             <ButtonBase
               category="bassic"
               onClick={() => {
@@ -368,33 +370,55 @@ function TemplateUi() {
           </>
         )}
       >
-        <h1 className="text-xl mb-4">Basic button</h1>
+        <TextTemplate className="text-lg mb-4">Basic button</TextTemplate>
+        <br/>
         <ButtonBase category="bassic">Basic button</ButtonBase>
 
-        <h1 className="text-xl mb-4">Loading button</h1>
+        <br/>
+        <TextTemplate className="text-lg mb-4">Loading button</TextTemplate>
+        <br/>
         <ButtonBase category="bassic" loading={true}>
           Loading button
         </ButtonBase>
-        <h1 className="text-xl mb-4">Button thêm</h1>
+        <br/>
+        <TextTemplate className="text-lg mb-4">Button thêm</TextTemplate>
+        <br/>
         <ButtonBase category="create"></ButtonBase>
+        <br/>
 
-        <h1 className="text-xl mb-4">Button sửa</h1>
+        <TextTemplate className="text-lg mb-4">Button sửa</TextTemplate>
+        <br/>
         <ButtonBase category="update"></ButtonBase>
+        <br/>
 
-        <h1 className="text-xl mb-4">Button Đi tới chỉnh sửa</h1>
+        <TextTemplate className="text-lg mb-4">
+          Button Đi tới chỉnh sửa
+        </TextTemplate>
+        <br/>
         <ButtonBase category="goUpdate"></ButtonBase>
+        <br/>
 
-        <h1 className="text-xl mb-4">Button Xóa</h1>
+        <TextTemplate className="text-lg mb-4">Button Xóa</TextTemplate>
+        <br/>
         <ButtonBase category="remove"></ButtonBase>
+        <br/>
 
-        <h1 className="text-xl mb-4">Button Quay lại</h1>
+        <TextTemplate className="text-lg mb-4">Button Quay lại</TextTemplate>
+        <br/>
         <ButtonBase category="back"></ButtonBase>
+        <br/>
 
-        <h1 className="text-xl mb-4">Button clear form</h1>
+        <TextTemplate className="text-lg mb-4">
+          Button clear form
+        </TextTemplate>
+        <br/>
         <ButtonBase category="clearForm"></ButtonBase>
+        <br/>
 
-        <h1 className="text-xl mb-4">Button tìm kiếm</h1>
+        <TextTemplate className="text-lg mb-4">Button tìm kiếm</TextTemplate>
+        <br/>
         <ButtonBase category="search"></ButtonBase>
+        <br/>
       </CardLayoutTemplate>
 
       {/* Form base */}
@@ -494,7 +518,7 @@ function TemplateUi() {
         <TableBasic columns={columns}></TableBasic>
       </CardLayoutTemplate>
 
-      <h1 className="text-xl mb-4">Form Table</h1>
+      <TextTemplate className="text-lg mb-4">Form Table</TextTemplate>
       <TableTemplate
         title={() => (
           <>
@@ -576,7 +600,9 @@ function TemplateUi() {
         <Avatar.Group>
           <AvatarTemplate src="https://api.dicebear.com/7.x/miniavs/svg?seed=1" />
           <a href="https://ant.design">
-            <AvatarTemplate style={{ backgroundColor: "#f56a00" }}>K</AvatarTemplate>
+            <AvatarTemplate style={{ backgroundColor: "#f56a00" }}>
+              K
+            </AvatarTemplate>
           </a>
           <Tooltip title="Ant User" placement="top">
             <AvatarTemplate
@@ -597,7 +623,9 @@ function TemplateUi() {
           }}
         >
           <AvatarTemplate src="https://api.dicebear.com/7.x/miniavs/svg?seed=2" />
-          <AvatarTemplate style={{ backgroundColor: "#f56a00" }}>K</AvatarTemplate>
+          <AvatarTemplate style={{ backgroundColor: "#f56a00" }}>
+            K
+          </AvatarTemplate>
           <Tooltip title="Ant User" placement="top">
             <AvatarTemplate
               style={{ backgroundColor: "#87d068" }}
@@ -618,7 +646,9 @@ function TemplateUi() {
           }}
         >
           <AvatarTemplate src="https://api.dicebear.com/7.x/miniavs/svg?seed=3" />
-          <AvatarTemplate style={{ backgroundColor: "#f56a00" }}>K</AvatarTemplate>
+          <AvatarTemplate style={{ backgroundColor: "#f56a00" }}>
+            K
+          </AvatarTemplate>
           <Tooltip title="Ant User" placement="top">
             <AvatarTemplate
               style={{ backgroundColor: "#87d068" }}
@@ -644,7 +674,9 @@ function TemplateUi() {
           }}
         >
           <AvatarTemplate src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-          <AvatarTemplate style={{ backgroundColor: "#f56a00" }}>K</AvatarTemplate>
+          <AvatarTemplate style={{ backgroundColor: "#f56a00" }}>
+            K
+          </AvatarTemplate>
           <Tooltip title="Ant User" placement="top">
             <AvatarTemplate
               style={{ backgroundColor: "#87d068" }}
@@ -658,8 +690,12 @@ function TemplateUi() {
         </Avatar.Group>
         <DividerTemplate />
         <Avatar.Group shape="square">
-          <AvatarTemplate style={{ backgroundColor: "#fde3cf" }}>A</AvatarTemplate>
-          <AvatarTemplate style={{ backgroundColor: "#f56a00" }}>K</AvatarTemplate>
+          <AvatarTemplate style={{ backgroundColor: "#fde3cf" }}>
+            A
+          </AvatarTemplate>
+          <AvatarTemplate style={{ backgroundColor: "#f56a00" }}>
+            K
+          </AvatarTemplate>
           <AvatarTemplate
             style={{ backgroundColor: "#87d068" }}
             icon={<FontAwesomeBase iconName={"home"}></FontAwesomeBase>}
@@ -706,15 +742,17 @@ function TemplateUi() {
           </>
         )}
       >
-        <h1 className="text-xl mb-4">Upload file</h1>
+        <TextTemplate className="text-lg mb-4">Upload file</TextTemplate>
         <InputFileTemplate
           columns={columns}
           name={"textEditer"}
           mode={TYPE_MANAGEMENT.MODE_CREATE}
           control={control}
         ></InputFileTemplate>
+        <br/>
 
-        <h1 className="text-xl mb-4">Preview Bassic</h1>
+        <TextTemplate className="text-lg mb-4">Preview Bassic</TextTemplate>
+        <br/>
 
         <PreviewTemplate
           category="Image"
@@ -725,8 +763,10 @@ function TemplateUi() {
             },
           ]}
         ></PreviewTemplate>
+        <br/>
 
-        <h1 className="text-xl mb-4">Preview List</h1>
+        <TextTemplate className="text-lg mb-4">Preview List</TextTemplate>
+        <br/>
         <PreviewTemplate
           category="Image"
           data={[
@@ -740,8 +780,12 @@ function TemplateUi() {
             },
           ]}
         ></PreviewTemplate>
+        <br/>
 
-        <h1 className="text-xl mb-4">Preview a collection from one image.</h1>
+        <TextTemplate className="text-lg mb-4">
+          Preview a collection from one image.
+        </TextTemplate>
+        <br/>
         <PreviewTemplate
           category="Image"
           data={[
@@ -756,8 +800,10 @@ function TemplateUi() {
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6sxBlxs9by-D43ovCOqtwBJbc6w0ZbNzVeLOQoMQf5Am8Bvhe0tQNYePvivVQ6vB8beg&usqp=CAU",
           ]}
         ></PreviewTemplate>
+        <br/>
 
-        <h1 className="text-xl mb-4">Video Preview.</h1>
+        <TextTemplate className="text-lg mb-4">Video Preview.</TextTemplate>
+        <br/>
         <PreviewTemplate
           category="Video"
           srcDefault={{
@@ -769,6 +815,7 @@ function TemplateUi() {
           }
           styleVideo={{ width: 900 }}
         ></PreviewTemplate>
+        <br/>
       </CardLayoutTemplate>
     </>
   );

@@ -1,0 +1,45 @@
+:root {
+    --backgroup-layout: #f6f6f6;
+    --backgroup-card: #ffffff;
+    --backgroup-button: #f6f6f6;
+    --backgroup-input:#ffffff;
+    --backgroup-header: #fff;
+    --backgroup-drawer: #fff;
+    --backgroup-sider: #fff;
+    --color-title: #000;
+    --color-sub-title:#f6f6f6;
+    --color-content:#f6f6f6;
+    --color-active:#f6f6f6;
+    --color-input:#f6f6f6;
+    --color-breakcum: rgba(0, 0, 0, 0.45);
+    --border-card-header: 1px solid #f0f0f0;
+    --ant-input-outlined-border: #d9d9d9;
+    --shawdow-custom: 0 7px 14px 0 rgba(65, 69, 88, 0.1), 0 3px 6px 0 rgba(0, 0, 0, 0.07);
+    --page-backgroup: #fff;
+    --page-border: #edf2f9;
+    --table-header-bg: #fafafa;
+    --table-header-select: #f0f0f0;
+}
+
+[data-theme="dark"] {
+    --backgroup-layout: #0c1627;
+    --backgroup-card: #131d2d;
+    --backgroup-button: #000;
+    --backgroup-input:#131d2d;
+    --backgroup-header: #131d2d;
+    --backgroup-drawer: #131d2d;
+    --backgroup-sider: #131d2d;
+    --color-title: #d8e2ef;
+    --color-sub-title:#000;
+    --color-content:#000;
+    --color-active:#000;
+    --color-input:#000;
+    --color-breakcum: #94a3b8;
+    --border-card-header: 1px solid rgba(255, 255, 255, 0.05);
+    --ant-input-outlined-border: #94a3b8;
+    --shawdow-custom: 0 7px 14px 0 rgba(3, 12, 51, 0.15), 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+    --page-backgroup: #0b1727;
+    --page-border: #edf2f9;
+    --table-header-bg: rgba(35, 46, 60, 1);
+    --table-header-select: rgb(26, 35, 48);
+}

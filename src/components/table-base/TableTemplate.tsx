@@ -2,6 +2,7 @@ import { Card, Pagination, Select, Table } from "antd";
 import type { TablePaginationConfig, TableProps } from "antd";
 import { memo, useState } from "react";
 import { useTranslation } from "react-i18next";
+import TitleTemplate from "../lable-base/TitleTemplate";
 const { Option } = Select;
 
 interface PaginationProps {
@@ -51,8 +52,8 @@ function TableTemplate({
   return (
     <>
       <Card
-        className="shadow-md"
-        title={<h1 className="text-lg">{title && (typeof title === 'function' ? title() : title)}</h1>}
+        className="shadow-custom"
+        title={<TitleTemplate level={4}>{title && (typeof title === 'function' ? title() : title)}</TitleTemplate>}
         extra={active}>
         <Table
           size="small"

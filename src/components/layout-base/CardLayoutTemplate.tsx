@@ -1,17 +1,19 @@
 import React, { memo } from "react";
 import { Card } from "antd";
+import TitleTemplate from "../lable-base/TitleTemplate";
 
 const CardLayoutTemplate: React.FC<any> = ({
     children,
   active,
   title,
+  className,
   ...restProps
 }) => {
   return (
     <>
       <Card
-        className="shadow-md"
-        title={<h1 className="text-lg">{title && (typeof title === 'function' ? title() : title)}</h1>}
+        className={className + " shadow-custom"}
+        title={<TitleTemplate level={4}>{title && (typeof title === 'function' ? title() : title)}</TitleTemplate>}
         {...restProps}
         extra={active}>
             {children}

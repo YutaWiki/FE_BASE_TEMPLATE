@@ -5,39 +5,50 @@ export const en = {
   home: "Home",
   user: "My name is: {{name}}",
   common: {
-    badRequestException: "Lỗi dữ liệu",
+    badRequestException: "Data error!!!",
     rowNum: "#",
-    action: "Hành động",
+    action: "Action",
     button: {
-      create: "Thêm",
-      update: "Sửa",
-      delete: "Xóa",
-      detail: "Chi tiết",
-      goToUpdate: "Đi tới màn sửa",
-      back: "Quay lại",
+      create: "Create",
+      update: "Update",
+      delete: "Remove",
+      detail: "Detail",
+      goToUpdate: "Go Update",
+      back: "Back",
     },
     checkbox: {
-      checkedAll: "Chọn tất cả",
+      checkedAll: "Select All",
     },
     radiobox: {
-      radioboxAll: "Lựa chọn",
+      radioboxAll: "Select",
+    },
+    input: {
+      placeholder: "Nhập...",
     },
     select: {
-      selectDefault: "Lựa chọn",
+      selectDefault: "Select",
     },
     pagination: {
-      page: "/ trang",
+      page: "/ page",
     },
     notification: {
-      error: "Thông báo lỗi",
-      success: "Thông báo thành công",
-      warning: "Cảnh báo",
-      info: "Thông báo",
+      error: "Error!!!",
+      success: "Success!!!",
+      warning: "Warning!!!",
+      info: "Info!!!",
     },
     formSearch: {
       clear: "Clear",
-      search: "Tìm kiếm",
+      search: "Search",
     },
+    inputFile: {
+      upload: "Upload",
+      validateFile: {
+        maxSize: "File max size 5MB!"
+      },
+      confirm: "Bạn có chắc chắn muốn xóa file không?",
+      success: "Tải lên file thành công!"
+    }
   },
   base: {
     common: {
@@ -49,6 +60,6 @@ export const en = {
       },
     },
   },
-  titleTable: "Danh sách",
-  titleSearch: "Tìm kiếm",
+  titleTable: "List Form",
+  titleSearch: "Search Form",
 };

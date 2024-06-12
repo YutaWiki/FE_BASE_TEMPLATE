@@ -30,6 +30,8 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { changeLanguage } from "../../i18n";
 import logo from "../../assets/images/logo/image.png";
 import SearchTemplate from "../input-form/SearchTemplate";
+import TitleTemplate from "../lable-base/TitleTemplate";
+import useLocalStorage from "use-local-storage";
 
 const { Header, Content, Sider } = Layout;
 
@@ -130,7 +132,11 @@ const LayoutTemplate: React.FC<LayoutTemplateProps> = ({
   const data = useAppSelector(GetMenu);
   const dispatch = useAppDispatch();
 
+  const preference = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const [isDark, setIsDark] = useLocalStorage("isDark", preference);
+
   useEffect(() => {
+    setIsDark(false)
     if (data && data.length === 0) {
       // MenuAPI.getMenu().then((result: any) => {
       dispatch(SetMenu(menu));
@@ -196,7 +202,7 @@ const LayoutTemplate: React.FC<LayoutTemplateProps> = ({
   }
 
   return (
-    <Layout className="min-h-svh">
+    <Layout className="min-h-svh" data-theme={isDark ? "dark" : "light"}>
       <Drawer
         id="drawer_ui"
         title={false}
@@ -206,7 +212,6 @@ const LayoutTemplate: React.FC<LayoutTemplateProps> = ({
         open={visible}
         key={"left"}
         width={250}
-        style={{ background: "#fff", overflowX: "hidden" }}
       >
         <Layout
           id="layout_drawer"
@@ -232,7 +237,6 @@ const LayoutTemplate: React.FC<LayoutTemplateProps> = ({
           className="shadow-md"
           style={{
             padding: 0,
-            background: "#ffff",
             position: 'fixed',
             top: 0,
             zIndex: 100,
@@ -301,16 +305,13 @@ const LayoutTemplate: React.FC<LayoutTemplateProps> = ({
             />
           </div>
         </Header>
-        <Layout>
+        <Layout className="mt-[60px]">
           <Sider
             id="sider_ui"
             trigger={null}
             collapsible
             collapsed={collapsed}
             className="shadow-md"
-            style={{
-              background: "#ffff",
-            }}
           >
             <div className="mt-4"
               style={{
@@ -339,7 +340,7 @@ const LayoutTemplate: React.FC<LayoutTemplateProps> = ({
                 justifyContent: "space-between",
               }}
             >
-              <h2
+              <TitleTemplate
                 style={{
                   display: "flex",
                   alignItems: "center",
@@ -354,7 +355,7 @@ const LayoutTemplate: React.FC<LayoutTemplateProps> = ({
                   alt=""
                 />
                 {t(title)}
-              </h2>
+              </TitleTemplate>
               <Breadcrumb>
                 <Breadcrumb.Item>
                   <Link to={"/"}>
