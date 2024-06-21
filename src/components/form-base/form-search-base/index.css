@@ -1,0 +1,14 @@
+.ant-collapse-borderless > .ant-collapse-item {
+  border-bottom: none;
+}
+
+.ant-collapse > .ant-collapse-item > .ant-collapse-header {
+  display: none;
+}
+
+.ant-collapse-borderless {
+    background: none;
+}
+.ant-collapse .ant-collapse-content>.ant-collapse-content-box {
+    padding: 0;
+}

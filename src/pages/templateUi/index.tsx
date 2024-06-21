@@ -29,6 +29,8 @@ import InputFileTemplate from "../../components/input-form/InputFileTemplate";
 import PreviewTemplate from "../../components/avatar-base/PreviewTemplate";
 import TitleTemplate from "../../components/lable-base/TitleTemplate";
 import TextTemplate from "../../components/lable-base/TextTemplate";
+import FormSearchTemplate from "../../components/form-base/form-search-base/FormSearchTemplate";
+import FormSearchChildTemplate from "../../components/form-base/form-search-base/FormSearchChildTemplate";
 
 function TemplateUi() {
   const mode = TYPE_MANAGEMENT.MODE_CREATE;
@@ -500,6 +502,63 @@ function TemplateUi() {
             <ButtonBase category="back"></ButtonBase>
           </FormFooterTemplate>
         </FormTemplate>
+      </CardLayoutTemplate>
+
+      {/* Form base */}
+      <CardLayoutTemplate
+        className="mt-7"
+        title={() => (
+          <>
+            <FontAwesomeBase
+              className="mr-3"
+              iconName={"home"}
+            ></FontAwesomeBase>
+            {"Mẫu Form Search"} // Mẫu sẽ được update theo figma
+          </>
+        )}
+      >
+        {/* form crud */}
+        <FormSearchTemplate footer="">
+          {/* content form crud */}
+
+          {/* Input form template */}
+          <FormSearchChildTemplate label={"Input template"}>
+            <InputTextTemplate mode={mode} name="input" control={control} />
+          </FormSearchChildTemplate>
+
+          {/* Input form template */}
+          <FormSearchChildTemplate label={"Input template"}>
+            <InputTextTemplate mode={mode} name="input" control={control} />
+          </FormSearchChildTemplate>
+          {/* Input form template */}
+          <FormSearchChildTemplate label={"Input template"}>
+            <InputTextTemplate mode={mode} name="input" control={control} />
+          </FormSearchChildTemplate>
+          {/* Input form template */}
+          <FormSearchChildTemplate label={"Input template"}>
+            <InputTextTemplate mode={mode} name="input" control={control} />
+          </FormSearchChildTemplate>
+          {/* Input form template */}
+          <FormSearchChildTemplate label={"Input template"}>
+            <InputTextTemplate mode={mode} name="input" control={control} />
+          </FormSearchChildTemplate>
+          {/* Input form template */}
+          <FormSearchChildTemplate label={"Input template"}>
+            <InputTextTemplate mode={mode} name="input" control={control} />
+          </FormSearchChildTemplate>
+          {/* Input form template */}
+          <FormSearchChildTemplate label={"Input template"}>
+            <InputTextTemplate mode={mode} name="input" control={control} />
+          </FormSearchChildTemplate>
+          {/* Input form template */}
+          <FormSearchChildTemplate label={"Input template"}>
+            <InputTextTemplate mode={mode} name="input" control={control} />
+          </FormSearchChildTemplate>
+          {/* Input form template */}
+          <FormSearchChildTemplate label={"Input template"}>
+            <InputTextTemplate mode={mode} name="input" control={control} />
+          </FormSearchChildTemplate>
+        </FormSearchTemplate>
       </CardLayoutTemplate>
 
       {/* Form base */}
