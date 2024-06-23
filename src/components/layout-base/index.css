@@ -14,6 +14,10 @@
     display: none;
 }
 
+.change__language .ant-select-selector {
+    border: none !important;
+}
+
 @media (max-width: 1025px) {
     #drawer_ui, .ant-drawer-content-wrapper, .ant-drawer-mask, .ant-drawer, #button_sider {
         display: block;

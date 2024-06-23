@@ -518,7 +518,11 @@ function TemplateUi() {
         )}
       >
         {/* form crud */}
-        <FormSearchTemplate footer="">
+        <FormSearchTemplate footer={
+              <>
+                <ButtonBase category="clearForm"></ButtonBase>
+                <ButtonBase category="search"></ButtonBase>
+              </>}>
           {/* content form crud */}
 
           {/* Input form template */}
@@ -608,6 +612,7 @@ function TemplateUi() {
         columns={columns}
         dataSource={[]}
         loading={false}
+        skeleton={false}
         paginationProp={{
           current: 1,
           size: 10,

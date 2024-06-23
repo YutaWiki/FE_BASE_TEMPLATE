@@ -3,6 +3,8 @@ import { Button, ButtonProps } from "antd";
 import { ButtonType } from "../../interface/constants/type/Type.const";
 import FontAwesomeBase from "../font-awesome/FontAwesomeBase";
 import { useTranslation } from "react-i18next";
+import "./index.css"
+
 interface ButtonBaseProps extends ButtonProps {
   children?: any;
   category: ButtonType;

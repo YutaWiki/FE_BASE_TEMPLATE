@@ -3,18 +3,20 @@ import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   HomeOutlined,
-  CaretDownOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import {
+  Avatar,
+  Badge,
   Breadcrumb,
   Button,
   Drawer,
+  Dropdown,
   Layout,
   Menu,
-  Popover,
   Row,
   Select,
+  Space,
 } from "antd";
 import { useTranslation } from "react-i18next";
 import { LANGUAGES } from "../../interface/constants/languages";
@@ -29,9 +31,23 @@ import { IMenu } from "../../interface/common/Menu.interface";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { changeLanguage } from "../../i18n";
 import logo from "../../assets/images/logo/image.png";
-import SearchTemplate from "../input-form/SearchTemplate";
+import english from "../../assets/images/language/en.svg";
+import vietnam from "../../assets/images/language/vietnam.png";
+import japan from "../../assets/images/language/japan.png";
+// import SearchTemplate from "../input-form/SearchTemplate";
 import TitleTemplate from "../lable-base/TitleTemplate";
 import useLocalStorage from "use-local-storage";
+import DividerTemplate from "../divider-base/DividerTemplate";
+import NotificationTemplate from "./NotificationTemplate";
+
+const getLogoLanguage = (selectedLanguage:string) => {
+  switch (selectedLanguage) {
+    case "vi": return (<img src={vietnam} className="mr-2 border-dashed border-1 border-sky-500 " />);
+    case "en": return (<img src={english} className="mr-2 border-dashed border-1 border-sky-500 " />);
+    case "jp": return (<img src={japan} className="mr-2 border-dashed border-1 border-sky-500 " />);
+  }
+  return (<></>);
+}
 
 const { Header, Content, Sider } = Layout;
 
@@ -47,6 +63,33 @@ const LayoutTemplate: React.FC<LayoutTemplateProps> = ({
   title,
   breakcrumb,
 }) => {
+  const [userName, setUserName] = useState<String>("Admin")
+
+  const [collapsed, setCollapsed] = useState(false);
+  const [visible, setVisible] = useState(false);
+
+  const { i18n, t } = useTranslation();
+  const [selectedLanguage, setSelectedLanguage] = useState<string>(
+    i18n.language
+  );
+
+  const items: MenuProps["items"] = [
+    {
+      label: <a href="https://www.antgroup.com">{ t('menuItem.profile') }</a>,
+      key: "0",
+    },
+    {
+      label: <a href="https://www.aliyun.com">{ t('menuItem.setting') }</a>,
+      key: "1",
+    },
+    {
+      type: "divider",
+    },
+    {
+      label: <a href="https://www.aliyun.com">{ t('menuItem.logout') }</a>,
+      key: "2",
+    },
+  ];
   // FIX Cứng menu
   const menu = [
     {
@@ -136,7 +179,7 @@ const LayoutTemplate: React.FC<LayoutTemplateProps> = ({
   const [isDark, setIsDark] = useLocalStorage("isDark", preference);
 
   useEffect(() => {
-    setIsDark(false)
+    setIsDark(false);
     if (data && data.length === 0) {
       // MenuAPI.getMenu().then((result: any) => {
       dispatch(SetMenu(menu));
@@ -144,13 +187,6 @@ const LayoutTemplate: React.FC<LayoutTemplateProps> = ({
     }
   }, [dispatch]);
 
-  const [collapsed, setCollapsed] = useState(false);
-  const [visible, setVisible] = useState(false);
-
-  const { i18n, t } = useTranslation();
-  const [selectedLanguage, setSelectedLanguage] = useState<string>(
-    i18n.language
-  );
   const onChangeLang = (langCode: string) => {
     setSelectedLanguage(langCode);
     changeLanguage(langCode);
@@ -236,13 +272,13 @@ const LayoutTemplate: React.FC<LayoutTemplateProps> = ({
         <Header
           className="shadow-md"
           style={{
-            padding: 0,
-            position: 'fixed',
+            position: "fixed",
             top: 0,
             zIndex: 100,
             width: "100%",
             display: "flex",
             height: 60,
+            padding: "0 24px",
             alignItems: "center",
             justifyContent: "space-between",
           }}
@@ -251,58 +287,72 @@ const LayoutTemplate: React.FC<LayoutTemplateProps> = ({
             <div id="logo_id">
               <img src={logo} className="w-[50px]" alt="" />
             </div>
+            <div>
+              {/* show sider */}
+              <Button
+                type="text"
+                id="btn__sider"
+                icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                onClick={() => setCollapsed(!collapsed)}
+                style={{
+                  fontSize: "16px",
+                  width: 45,
+                  height: 45,
+                  margin: "5px 0 ",
+                  display: "none"
+                }}
+              />
+              {/* show drawer */}
+              <Button
+                type="text"
+                id="btn__drawer"
+                icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                onClick={() => setVisible(true)}
+                style={{
+                  fontSize: "16px",
+                  width: 45,
+                  height: 45,
+                  margin: "5px 0 ",
+                }}
+              />
+            </div>
           </div>
-          <div className="flex items-center">
+          {/* <div className="flex items-center">
             <SearchTemplate></SearchTemplate>
-          </div>
+          </div> */}
           <div className="flex items-center mr-[14px]">
-            <span>
-              <Popover
-                placement="bottomRight"
-                title={null}
-                content={
-                  <>
-                    <Select
-                      defaultValue={i18n.language}
-                      onChange={onChangeLang}
-                      value={selectedLanguage}
-                      options={LANGUAGES.map(({ code, label }) => ({
-                        value: code,
-                        label: label,
-                      }))}
-                    />
-                  </>
-                }
-              >
-                <CaretDownOutlined />
-              </Popover>
-            </span>
-            {/* show sider */}
-            <Button
-              type="text"
-              id="btn__sider"
-              icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-              onClick={() => setCollapsed(!collapsed)}
-              style={{
-                fontSize: "16px",
-                width: 45,
-                height: 45,
-                margin: "5px 0 ",
-              }}
+            <Select
+              className="border-0 change__language"
+              suffixIcon={null}
+              defaultValue={i18n.language}
+              onChange={onChangeLang}
+              value={selectedLanguage}
+              options={LANGUAGES.map(({ code, label }) => ({
+                value: code,
+                label: <div className="flex items-center">{getLogoLanguage(code)}{label}</div>,
+              }))}
             />
-            {/* show drawer */}
-            <Button
-              type="text"
-              id="btn__drawer"
-              icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-              onClick={() => setVisible(true)}
-              style={{
-                fontSize: "16px",
-                width: 45,
-                height: 45,
-                margin: "5px 0 ",
-              }}
-            />
+            <DividerTemplate type="vertical" />
+            <div className="px-[11px]">
+              <Dropdown className="cursor-pointer" menu={ {items} } trigger={['click']}>
+                <Space>
+                  <Avatar src={logo}></Avatar>
+                  <span>{t('hi')}{userName}</span>
+                </Space>
+              </Dropdown>
+            </div>
+          <DividerTemplate type="vertical" />
+            <Dropdown key={"notification__custom"} open={true} className="cursor-pointer notification__custom" 
+              overlay={
+                  <NotificationTemplate></NotificationTemplate>
+              }
+             trigger={['hover']}>
+                <Space>
+                  <Badge count={1} size="small" overflowCount={10}>
+                    <FontAwesomeBase className="text-base" iconName={"bell"} />
+                  </Badge>
+                </Space>
+              </Dropdown>
           </div>
         </Header>
         <Layout className="mt-[60px]">
@@ -313,7 +363,8 @@ const LayoutTemplate: React.FC<LayoutTemplateProps> = ({
             collapsed={collapsed}
             className="shadow-md"
           >
-            <div className="mt-4"
+            <div
+              className="mt-4"
               style={{
                 width: collapsed ? "80px" : "200px",
                 position: "fixed",
@@ -349,11 +400,7 @@ const LayoutTemplate: React.FC<LayoutTemplateProps> = ({
                   fontSize: 22,
                 }}
               >
-                <img
-                  style={{ width: 35, marginRight: 8 }}
-                  src="https://s3-alpha-sig.figma.com/img/c755/abbe/255d7752e7297398c9a6cc12cada9e3a?Expires=1718582400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=coDENIIEPdA2C6c-cTaUpY1GX8tsiC0sTLrODO3NdEUeKadPXx7r~wrm4d9hR8J6oeGbu5rFOAsHAj3MQpnF--gG-hJnPRpE0H5-JBjm2FOZGtWu-OPr26KOdjN5IHgrVPFyBrz6LAFvhpxkQsw9xIa06N1HyDEA-k56Gv1lr5O7Stfa6XDIlLETO7NLyX2iU74od4GIXd8wLxRw1ziHsPP8dftZt4-RBbaAJzfix9R81KUJFm6w01fHeN6EYpxJhixdmjTVliryDU424RAoT~zXVDPkQlioXbo7BnBBxfH5BaclkIufKSBTNaHgcd6g4O2dtHZU-Kq36xnxVs8onQ__"
-                  alt=""
-                />
+                <img style={{ width: 35, marginRight: 8 }} src={logo} alt="" />
                 {t(title)}
               </TitleTemplate>
               <Breadcrumb>

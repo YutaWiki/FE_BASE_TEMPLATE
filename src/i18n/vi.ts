@@ -3,7 +3,13 @@ export const vi = {
   label: "Select another language!",
   about: "tiếng pháp nha",
   home: "Home",
-  user: "My name is: {{name}}",
+  hi: "Xin chào, ",
+  menuItem: {
+    login: "Đăng nhập",
+    logout: "Đăng xuất",
+    profile: "Xem hồ sơ",
+    setting: "Cài đặt"
+  },
   common: {
     badRequestException: "Lỗi dữ liệu",
     rowNum: "#",

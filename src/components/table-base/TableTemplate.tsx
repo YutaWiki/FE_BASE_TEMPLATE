@@ -1,8 +1,11 @@
-import { Card, Pagination, Select, Table } from "antd";
+import { Card, Pagination, Select, Skeleton, Table } from "antd";
 import type { TablePaginationConfig, TableProps } from "antd";
 import { memo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import TitleTemplate from "../lable-base/TitleTemplate";
+
+import './index.css'
+
 const { Option } = Select;
 
 interface PaginationProps {
@@ -16,6 +19,7 @@ interface TableTemplateProps extends TableProps {
   columns: Array<any>;
   active: any;
   title: any;
+  skeleton?: boolean;
   onChange: (
     pagination: TablePaginationConfig,
     filters: any,
@@ -32,6 +36,7 @@ function TableTemplate({
   expandable,
   active,
   title,
+  skeleton,
   dataSource, columns, paginationProp, onChange, handlePageSizeChange, handlePaginationChange, ...restProps
 }: TableTemplateProps) {
   const { t } = useTranslation();
@@ -55,36 +60,38 @@ function TableTemplate({
         className="shadow-custom"
         title={<TitleTemplate level={4}>{title && (typeof title === 'function' ? title() : title)}</TitleTemplate>}
         extra={active}>
-        <Table
-          size="small"
-          scroll={{ x: "auto" }}
-          dataSource={dataSource}
-          columns={columns}
-          pagination={false}
-          rowKey="rowNumber"
-          onChange={onChange}
-          loading={loading}
-          {...restProps}
-        />
-        <div className="flex justify-center mt-5">
-          <Pagination
-            className="mr-3"
-            total={paginationProp.total * pageSize}
-            showTotal={(total, range) => `${range[0]}-${range[1]} of ${total} items`}
-            pageSize={pageSize}
-            current={current}
-            onChange={paginationChange}
-            showSizeChanger={false}
-          />
-          
-          <Select value={pageSize} onChange={sizeChange}>
-            <Option value={10}>10 {t('common.pagination.page')}</Option>
-            <Option value={20}>20 {t('common.pagination.page')}</Option>
-            <Option value={30}>30 {t('common.pagination.page')}</Option>
-            <Option value={50}>50 {t('common.pagination.page')}</Option>
-            <Option value={100}>100 {t('common.pagination.page')}</Option>
-          </Select>
-        </div>
+          <Skeleton loading={skeleton === undefined ? false : skeleton}>
+          <Table
+              size="small"
+              scroll={{ x: "auto" }}
+              dataSource={dataSource}
+              columns={columns}
+              pagination={false}
+              rowKey="rowNumber"
+              onChange={onChange}
+              loading={loading}
+              {...restProps}
+            />
+            <div className="flex justify-center mt-5">
+              <Pagination
+                className="mr-3"
+                total={paginationProp.total * pageSize}
+                showTotal={(total, range) => `${range[0]}-${range[1]} of ${total} items`}
+                pageSize={pageSize}
+                current={current}
+                onChange={paginationChange}
+                showSizeChanger={false}
+              />
+              
+              <Select value={pageSize} onChange={sizeChange}>
+                <Option value={10}>10 {t('common.pagination.page')}</Option>
+                <Option value={20}>20 {t('common.pagination.page')}</Option>
+                <Option value={30}>30 {t('common.pagination.page')}</Option>
+                <Option value={50}>50 {t('common.pagination.page')}</Option>
+                <Option value={100}>100 {t('common.pagination.page')}</Option>
+              </Select>
+            </div>
+          </Skeleton>
       </Card>
     </>
   );
