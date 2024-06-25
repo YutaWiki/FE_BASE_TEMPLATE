@@ -3,7 +3,7 @@ import { memo } from "react";
 
 const FontAwesomeBase = ({iconName, ...restProps}) => {
     return <>
-        <FontAwesomeIcon icon={["fa", iconName]} className="icon__custom"
+        <FontAwesomeIcon icon={["fa", iconName]} className={`icon__custom text-gray-500 ${restProps.className}`}
             {...restProps} />
     </>
 };

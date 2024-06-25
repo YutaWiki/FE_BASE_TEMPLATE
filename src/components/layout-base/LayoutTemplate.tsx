@@ -38,7 +38,8 @@ import japan from "../../assets/images/language/japan.png";
 import TitleTemplate from "../lable-base/TitleTemplate";
 import useLocalStorage from "use-local-storage";
 import DividerTemplate from "../divider-base/DividerTemplate";
-import NotificationTemplate from "./NotificationTemplate";
+import NotificationTemplate from "./notification/NotificationTemplate";
+import LayoutNotification from "./notification/LayoutNotification";
 
 const getLogoLanguage = (selectedLanguage:string) => {
   switch (selectedLanguage) {
@@ -75,18 +76,18 @@ const LayoutTemplate: React.FC<LayoutTemplateProps> = ({
 
   const items: MenuProps["items"] = [
     {
-      label: <a href="https://www.antgroup.com">{ t('menuItem.profile') }</a>,
+      label: <span><FontAwesomeBase className="mr-3 text-xl" iconName={"user"}/><a href="https://www.antgroup.com">{ t('menuItem.profile') }</a></span>,
       key: "0",
     },
     {
-      label: <a href="https://www.aliyun.com">{ t('menuItem.setting') }</a>,
+      label: <span><FontAwesomeBase className="mr-3 text-xl" iconName={"gear"}/><a href="https://www.antgroup.com">{ t('menuItem.profile') }</a></span>,
       key: "1",
     },
     {
       type: "divider",
     },
     {
-      label: <a href="https://www.aliyun.com">{ t('menuItem.logout') }</a>,
+      label: <span><FontAwesomeBase className="mr-3 text-xl" iconName={"right-from-bracket"}/><a href="https://www.antgroup.com">{ t('menuItem.profile') }</a></span>,
       key: "2",
     },
   ];
@@ -342,11 +343,14 @@ const LayoutTemplate: React.FC<LayoutTemplateProps> = ({
               </Dropdown>
             </div>
           <DividerTemplate type="vertical" />
-            <Dropdown key={"notification__custom"} open={true} className="cursor-pointer notification__custom" 
+            <Dropdown key={"notification__custom"} className="cursor-pointer notification__custom" 
               overlay={
                   <NotificationTemplate></NotificationTemplate>
               }
-             trigger={['hover']}>
+              dropdownRender={(menu) => (
+                <LayoutNotification>{React.cloneElement(menu as React.ReactElement)}</LayoutNotification>
+              )}
+             trigger={['click']}>
                 <Space>
                   <Badge count={1} size="small" overflowCount={10}>
                     <FontAwesomeBase className="text-base" iconName={"bell"} />

@@ -40,7 +40,8 @@ const ButtonBase: React.FC<ButtonBaseProps> = ({
           <Button
             loading={loading}
             onClick={onClick}
-            className="btn__custom btn__add"
+            className={`btn__custom btn__add ${restProps.className}`}
+            {...restProps}
             icon={
               <FontAwesomeBase
                 className="m2-3"
@@ -56,7 +57,7 @@ const ButtonBase: React.FC<ButtonBaseProps> = ({
           <Button
             loading={loading}
             onClick={onClick}
-            className="btn__custom btn__back"
+            className={`btn__custom btn__back ${restProps.className}`}
             icon={
               <FontAwesomeBase
                 className="m2-3"
@@ -72,7 +73,7 @@ const ButtonBase: React.FC<ButtonBaseProps> = ({
           <Button
             loading={loading}
             onClick={onClick}
-            className="btn__custom btn__clearForm"
+            className={`btn__custom btn__clearForm  ${restProps.className}`}
             icon={
               <FontAwesomeBase
                 className="m2-3"
@@ -88,7 +89,7 @@ const ButtonBase: React.FC<ButtonBaseProps> = ({
           <Button
             loading={loading}
             onClick={onClick}
-            className="btn__custom btn__goToUpdate"
+            className={`btn__custom btn__goToUpdate ${restProps.className}`}
             icon={
               <FontAwesomeBase
                 className="m2-3"
@@ -111,7 +112,7 @@ const ButtonBase: React.FC<ButtonBaseProps> = ({
           <Button
             loading={loading}
             onClick={onClick}
-            className="btn__custom btn__search"
+            className={`btn__custom btn__search ${restProps.className}`}
             icon={
               <FontAwesomeBase
                 className="m2-3"
@@ -127,7 +128,7 @@ const ButtonBase: React.FC<ButtonBaseProps> = ({
           <Button
             loading={loading}
             onClick={onClick}
-            className="btn__custom btn__update"
+            className={`btn__custom btn__update ${restProps.className}`}
             icon={
               <FontAwesomeBase
                 className="m2-3"
@@ -136,6 +137,18 @@ const ButtonBase: React.FC<ButtonBaseProps> = ({
             }
           >
             {t("common.button.update")}
+          </Button>
+        </>
+      ) : category === "icon" ? (
+        <>
+          <Button
+            loading={loading}
+            onClick={onClick}
+            className={`btn__custom btn__icon ${restProps.className}`}
+            icon={
+              icon
+            }
+          >
           </Button>
         </>
       ) : (

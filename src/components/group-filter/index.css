@@ -1,0 +1,14 @@
+.group__filter {
+    padding: 8px 12px;
+    display: inline-block;
+    margin: 5px;
+}
+
+.group__filter:hover {
+    background-color: var(--backgroup-selected);
+}
+
+.group__filter.on {
+    color: #0064d1;
+    background-color: #ebf5ff;
+}

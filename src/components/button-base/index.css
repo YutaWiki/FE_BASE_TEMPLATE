@@ -1,3 +1,13 @@
 .btn__custom {
     margin: 0 5px;
 }
+
+.btn__custom.btn__icon {
+    border: none;
+    border-radius: 50%;
+    font-size: 18px;
+}
+
+.btn__custom.btn__icon:hover {
+    background-color: var(--backgroup-selected) !important;
+}
